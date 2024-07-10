@@ -2,8 +2,8 @@ package com.example.hexagonal.application;
 
 
 import com.example.hexagonal.adapter.out.OrderRepository;
-import com.example.hexagonal.domain.orderExample.Order;
-import com.example.hexagonal.domain.orderExample.OrderItem;
+import com.example.hexagonal.domain.orderexample.Orders;
+import com.example.hexagonal.domain.orderexample.OrderItem;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,34 +17,34 @@ public class OrderService {
     OrderRepository orderRepository;
 
     @Transactional
-    public Order createOrder(Order order){
-        orderRepository.persist(order);
-        return order;
+    public Orders createOrder(Orders orders){
+        orderRepository.persist(orders);
+        return orders;
     }
 
     @Transactional
     public void addItemToOrder(Long orderId, OrderItem item){
-        Order order = orderRepository.findById(orderId);
-        if(order != null) {
-            order.addItem(item);
-            orderRepository.persist(order);
+        Orders orders = orderRepository.findById(orderId);
+        if(orders != null) {
+            orders.addItem(item);
+            orderRepository.persist(orders);
         }
     }
 
     @Transactional
     public void updateOrderStatus(Long orderId, String status){
-        Order order = orderRepository.findById(orderId);
-        if(order != null) {
-            order.updateStatus(status);
-            orderRepository.persist(order);
+        Orders orders = orderRepository.findById(orderId);
+        if(orders != null) {
+            orders.updateStatus(status);
+            orderRepository.persist(orders);
         }
     }
 
-    public List<Order> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderRepository.listAll();
     }
 
-    public Order findOrderById(Long orderId){
+    public Orders findOrderById(Long orderId){
         return orderRepository.findById(orderId);
     }
 }

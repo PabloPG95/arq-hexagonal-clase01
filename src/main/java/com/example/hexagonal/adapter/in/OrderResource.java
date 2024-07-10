@@ -1,8 +1,8 @@
 package com.example.hexagonal.adapter.in;
 
 import com.example.hexagonal.application.OrderService;
-import com.example.hexagonal.domain.orderExample.Order;
-import com.example.hexagonal.domain.orderExample.OrderItem;
+import com.example.hexagonal.domain.orderexample.Orders;
+import com.example.hexagonal.domain.orderexample.OrderItem;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -17,9 +17,9 @@ public class OrderResource {
     OrderService orderService;
 
     @POST
-    public Response createOrder(Order order){
-        orderService.createOrder(order);
-        return Response.status(Response.Status.CREATED).entity(order).build();
+    public Response createOrder(Orders orders){
+        orderService.createOrder(orders);
+        return Response.status(Response.Status.CREATED).entity(orders).build();
     }
 
     @POST
@@ -44,9 +44,9 @@ public class OrderResource {
     @GET
     @Path("/{orderId}")
     public Response findOrderById(@PathParam("orderId") Long orderId){
-        Order order = orderService.findOrderById(orderId);
-        if(order != null){
-            return Response.ok(order).build();
+        Orders orders = orderService.findOrderById(orderId);
+        if(orders != null){
+            return Response.ok(orders).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

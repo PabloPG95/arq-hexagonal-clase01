@@ -1,4 +1,4 @@
-package com.example.hexagonal.domain.orderExample;
+package com.example.hexagonal.domain.orderexample;
 
 import jakarta.persistence.Embeddable;
 

@@ -1,7 +1,7 @@
 package com.example.hexagonal.adapter.out;
 
-import com.example.hexagonal.domain.orderExample.Order;
-import com.example.hexagonal.domain.orderExample.OrderItem;
+import com.example.hexagonal.domain.orderexample.Orders;
+import com.example.hexagonal.domain.orderexample.OrderItem;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -10,18 +10,17 @@ import java.time.LocalDateTime;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
-class OrderRepositoryTest {
+class OrdersRepositoryTest {
 
 
     @Test
     void testCreateOrderEndpoint(){
-        Order order = new Order(LocalDateTime.now(), "PENDING");
+        Orders orders = new Orders(LocalDateTime.now(), "PENDING");
         given()
                 .contentType("application/json")
-                .body(order)
+                .body(orders)
                 .when().post("/orders")
                 .then()
                 .statusCode(201)
@@ -30,10 +29,10 @@ class OrderRepositoryTest {
 
     @Test
     void testAddItemToOrderEndpoint(){
-        Order order = new Order(LocalDateTime.now(), "PENDING");
+        Orders orders = new Orders(LocalDateTime.now(), "PENDING");
         given()
                 .contentType("application/json")
-                .body(order)
+                .body(orders)
                 .when().post("/orders")
                 .then()
                 .statusCode(201);
@@ -43,17 +42,17 @@ class OrderRepositoryTest {
         given()
                 .contentType("application/json")
                 .body(item)
-                .when().post("/orders/" + order.getId() + "/items")
+                .when().post("/orders/" + orders.getId() + "/items")
                 .then()
                 .statusCode(200);
     }
 
     @Test
     void testUpdateOrderStatusEndpoint(){
-        Order order = new Order(LocalDateTime.now(), "PENDING");
+        Orders orders = new Orders(LocalDateTime.now(), "PENDING");
         given()
                 .contentType("application/json")
-                .body(order)
+                .body(orders)
                 .when().post("/orders")
                 .then()
                 .statusCode(201);
@@ -61,7 +60,7 @@ class OrderRepositoryTest {
         given()
                 .contentType("application/json")
                 .body("CONFIRMED")
-                .when().put("/orders/" + order.getId() + "/status")
+                .when().put("/orders/" + orders.getId() + "/status")
                 .then()
                 .statusCode(200);
     }

@@ -1,4 +1,4 @@
-package com.example.hexagonal.domain.orderExample;
+package com.example.hexagonal.domain.orderexample;
 
 
 import jakarta.persistence.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +21,10 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(LocalDateTime creationDate, String status) {
+    public Orders(LocalDateTime creationDate, String status) {
         this.creationDate = creationDate;
         this.status = status;
     }

@@ -1,7 +1,7 @@
-package com.example.hexagonal.adapter.out;
+package com.example.hexagonal.adapter.secondary;
 
-import com.example.hexagonal.domain.orderexample.Orders;
-import com.example.hexagonal.domain.orderexample.OrderItem;
+import com.example.hexagonal.domain.model.Orders;
+import com.example.hexagonal.core.domain.entity.OrderItem;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 

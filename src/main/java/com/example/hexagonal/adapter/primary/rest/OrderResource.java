@@ -1,8 +1,8 @@
-package com.example.hexagonal.adapter.in;
+package com.example.hexagonal.adapter.primary.rest;
 
 import com.example.hexagonal.application.OrderService;
-import com.example.hexagonal.domain.orderexample.Orders;
-import com.example.hexagonal.domain.orderexample.OrderItem;
+import com.example.hexagonal.domain.model.Orders;
+import com.example.hexagonal.core.domain.entity.OrderItem;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

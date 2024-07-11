@@ -1,4 +1,4 @@
-package com.example.hexagonal.adapter.in;
+package com.example.hexagonal.adapter.primary;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

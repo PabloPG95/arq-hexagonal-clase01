@@ -1,4 +1,4 @@
-package com.example.hexagonal.domain.orderexample;
+package com.example.hexagonal.core.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,8 +14,7 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String product;
-
+    private String productName;
 
     private int quantity;
 
@@ -24,8 +23,8 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public OrderItem(String product, int quantity, BigDecimal price) {
-        this.product = product;
+    public OrderItem(String productName, int quantity, BigDecimal price) {
+        this.productName = productName;
         this.quantity = quantity;
         this.price = price;
     }
@@ -34,12 +33,12 @@ public class OrderItem {
         return id;
     }
 
-    public String getProduct() {
-        return product;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getQuantity() {

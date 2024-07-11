@@ -1,6 +1,8 @@
-package com.example.hexagonal.domain.orderexample;
+package com.example.hexagonal.core.domain.entity;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -14,12 +16,16 @@ public class Customer {
     @Embedded
     private Address address;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrdersCRUD> orders;
+
     public Customer() {
     }
 
-    public Customer(String name, Address address) {
+    public Customer(String name, Address address, List<OrdersCRUD> orders) {
         this.name = name;
         this.address = address;
+        this.orders = orders;
     }
 
     public Long getId() {
@@ -40,6 +46,18 @@ public class Customer {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<OrdersCRUD> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(OrdersCRUD order) {
+        orders.add(order);
+    }
+
+    public void removeOrder(int id) {
+        orders.remove(id);
     }
 
 }

@@ -1,6 +1,6 @@
-package com.example.hexagonal.adapter.out;
+package com.example.hexagonal.adapter.secondary;
 
-import com.example.hexagonal.domain.orderexample.Orders;
+import com.example.hexagonal.domain.model.Orders;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -1,6 +1,8 @@
-package com.example.hexagonal.domain.orderexample;
+package com.example.hexagonal.domain.model;
 
 
+import com.example.hexagonal.core.domain.entity.Customer;
+import com.example.hexagonal.core.domain.entity.OrderItem;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,6 +22,8 @@ public class Orders {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
+
+    private Customer c;
 
     public Orders() {
     }
